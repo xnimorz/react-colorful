@@ -5,6 +5,8 @@ import { DevTools } from "./components/DevTools";
 import { useFaviconColor } from "./hooks/useFaviconColor";
 import { useBodyBackground } from "./hooks/useBodyBackground";
 import { useStargazerCount } from "./hooks/useStargazerCount";
+import Frame, { useFrame } from "react-frame-component";
+import { RgbaColorPicker } from "../../src";
 import {
   GlobalStyles,
   Header,
@@ -53,10 +55,14 @@ const Demo = () => {
   return (
     <div>
       <GlobalStyles />
-
       <Header style={{ color: textColor }}>
         <HeaderDemo>
-          <HeaderDemoPicker color={color} onChange={handleChange} />
+          <Frame>
+            <div style={{ height: 500 }}>
+              <GlobalStyles />
+              <RgbaColorPicker color={color} onChange={handleChange} />
+            </div>
+          </Frame>
         </HeaderDemo>
         <HeaderContent>
           <HeaderTitle>React Colorful 🎨</HeaderTitle>
@@ -85,8 +91,8 @@ const Demo = () => {
           </Links>
         </HeaderContent>
       </Header>
-
       {process.env.NODE_ENV === "development" && <DevTools />}
+      fremnfler
     </div>
   );
 };
